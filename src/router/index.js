@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import Router from 'vue-router'
 import Front from '@/components/Front'
 import Program from '@/components/Program'
@@ -10,6 +9,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: '',
+      component: Front
+    },
+    {
+      path: '/Front',
       name: 'Front',
       component: Front
     },
@@ -24,8 +28,8 @@ export default new Router({
       component: Music,
     },
     {
-      path: '/Menu',
-      name: 'Menu',
+      path: '/Prices',
+      name: 'Prices',
       component: Menu,
     }
   ]

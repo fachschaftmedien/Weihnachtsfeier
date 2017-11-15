@@ -4,57 +4,33 @@
       <v-toolbar-side-icon @click="nav = !nav"></v-toolbar-side-icon>
       <v-toolbar-title class="headline"> Weihnachtsfeier Fachbereich Medien</v-toolbar-title>
     </v-toolbar>
-    <v-navigation-drawer class="nav navigation" temporary v-model="nav" enable-resize-watcher app>
-      <v-layout>
+    <v-navigation-drawer class="nav navigation" persistent v-model="nav" enable-resize-watcher app>
+      <v-toolbar flat>
         <v-list>
-          <v-list-tile-content>
-            <router-link to="/Front">
-              <v-list-tile-action>
-                <v-icon>home</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-title>
-                Home
-              </v-list-tile-title>
-              <v-list-tile-sub-title>
-                Startseite
-              </v-list-tile-sub-title>
-            </router-link>
-          </v-list-tile-content>
-          <v-list-tile-content>
-            <router-link to="/Programm">
-              <v-list-tile-action>
-                <v-icon>mdi-event</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-title>
-                Abendprogramm
-              </v-list-tile-title>
-              <v-list-tile-sub-title>
-                Was wir wann alles an für den Abend geplant haben
-              </v-list-tile-sub-title>
-            </router-link>
-          </v-list-tile-content>
-          <v-list-tile-content>
-            <router-link to="/Menu">
-              <v-list-tile-action>mdi-food</v-list-tile-action>
-              <v-list-tile-title> Speisen & Getränke </v-list-tile-title>
-              <v-list-tile-sub-title>
-                Was gibt es so vom Grill oder an der Bar
-              </v-list-tile-sub-title>
-            </router-link>
-          </v-list-tile-content>
-          <v-list-tile-content>
-            <router-link to="/Music">
-              <v-list-tile-action>mdi-music</v-list-tile-action>
-              <v-list-tile-title>
-                Musik
-              </v-list-tile-title>
-              <v-list-tile-sub-title>
-                Welche Titel bereits gewünscht wurden & eigene Wünsche
-              </v-list-tile-sub-title>
-            </router-link>
-          </v-list-tile-content>
+          <v-list-tile>
+            <v-list-tile-title class="title">
+              Menu
+            </v-list-tile-title>
+          </v-list-tile>
         </v-list>
-      </v-layout>
+      </v-toolbar>
+      <v-list two-line subheader>
+        <v-list-tile avatar v-for="item in items" :key="item.name">
+          <v-list-tile-action icon>
+            <v-icon>{{item.icon}}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              <router-link :to="item.link">{{item.name}}</router-link>
+            </v-list-tile-title>
+            <v-list-tile-sub-title>
+              {{item.subtitle}}
+            </v-list-tile-sub-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-divider></v-divider>
+        <login></login>
+      </v-list>
     </v-navigation-drawer>
     <main>
       <v-content>
@@ -67,9 +43,6 @@
         </v-container>
       </v-content>
     </main>
-    <footer>
-      <login></login>
-    </footer>
   </v-app>
 </template>
 
@@ -79,12 +52,38 @@
   export default {
     name: 'app',
     components: {
-      Login
+      Login,
     },
     data(){
-        return {
-          nav: true
-        }
+      return {
+        nav: true,
+        items: [
+          {
+            icon: 'home',
+            name: 'Home',
+            subtitle: 'Startseite',
+            link: '/Front'
+          },
+          {
+            icon: 'event',
+            name: 'Abendprgramm',
+            subtitle: 'Was haben wir geplant',
+            link: '/Program'
+          },
+          {
+            icon: 'restaurant',
+            name: 'Speisen & Getränke',
+            subtitle: 'Was gibt es an Bar & Grill',
+            link: '/Prices'
+          },
+          {
+            icon: 'music_note',
+            name: 'Musik',
+            subtitle: 'Playlist & Wünsche',
+            link: '/Music'
+          }
+        ]
+      }
     }
   }
 </script>
