@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-layout row wrap>
-      <v-flex xs10 offset-xs1 v-if="item.type === allowed" v-for="item in prices" :key="item.name">
+      <v-flex xs10 offset-xs1 v-if="item.type === allowed" v-for="item in prices" :key="item['.key']">
         <v-layout row wrap>
           <v-flex xs7>
             <v-text-field type="text" v-model="item.name" required v-if="auth.isLoggedIn" label="Name" @change="update(item)"></v-text-field>

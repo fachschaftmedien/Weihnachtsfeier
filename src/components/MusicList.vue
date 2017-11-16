@@ -1,14 +1,13 @@
 <template>
     <v-data-table class="wishlist table data-table" :search="search" :items="songs" :headers="headers" pagination.sync="pagination">
-
       <template slot="items" slot-scope="props">
         <tr class="song">
-          <td v-if="auth.isLoggedIn"> <input type="number" min="-1" v-model="props.item.tracknumber" :disabled="!props.item.approved" @change="update(props.item)"> </td>
-          <td> {{props.item.title}} </td>
-          <td> {{props.item.interpret}} </td>
-          <td v-if="auth.isLoggedIn"> {{props.item.remark}} </td>
-          <td> {{new Date(props.item.date).toLocaleString('de-De',{minute: '2-digit', hour: '2-digit', year: 'numeric', month: 'numeric', day: 'numeric'})}}
-          <td> <div v-if="!auth.isLoggedIn"> {{props.item.approved ? 'Ja' : 'Nein'}} </div> <input v-else type="checkbox" v-model="props.item.approved" @change="update(props.item)"> </td>
+          <td class="text-xs-right" v-if="auth.isLoggedIn"> <input type="number" min="-1" v-model="props.item.tracknumber" :disabled="!props.item.approved" @change="update(props.item)"> </td>
+          <td class="text-xs-right"> {{props.item.title}} </td>
+          <td class="text-xs-right"> {{props.item.interpret}} </td>
+          <td class="text-xs-right" v-if="auth.isLoggedIn"> {{props.item.remark}} </td>
+          <td class="text-xs-right"> {{new Date(props.item.date).toLocaleString('de-De',{minute: '2-digit', hour: '2-digit', year: 'numeric', month: 'numeric', day: 'numeric'})}}
+          <td class="text-xs-right"> <v-icon v-if="!auth.isLoggedIn">{{props.item.approved ? 'fa-check-circle-o' : 'fa-circle-o'}}</v-icon> <input v-else type="checkbox" v-model="props.item.approved" @change="update(props.item)"> </td>
         </tr>
       </template>
       <template slot="no-data">

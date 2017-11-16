@@ -1,5 +1,6 @@
 <template>
     <v-container class="menu-container" fluid>
+      <p class="title">Getränke- & Speisekarte</p>
       <v-card>
         <v-card-title>
           Getränke
@@ -10,12 +11,12 @@
         <v-card-title>Essen</v-card-title>
         <menu-type :allowed="'food'"></menu-type>
       </v-card>
-      <v-card>
+      <v-card v-if="auth.isLoggedIn">
           <v-card-title>Hinzufügen</v-card-title>
         <v-container>
         <v-layout row wrap>
-          <v-flex xs10 offset-xs>
-            <v-form v-if="auth.isLoggedIn"  v-on:submit.prevent="add" v-on:reset="cancel">
+          <v-flex xs10 offset-xs1>
+            <v-form  v-on:submit.prevent="add" v-on:reset="cancel">
               <v-layout row wrap>
                 <v-flex xs6>
                   <v-text-field type="text" v-model="newItem.name" required label="Name"></v-text-field>
@@ -28,14 +29,19 @@
                 </v-flex>
               </v-layout>
               <v-layout row wrap>
-
+                <v-flex xs12>
+                  <v-btn type="submit">Hinzufügen<v-icon>plus-circle</v-icon></v-btn>
+                  <v-btn type="reset">Abbrechen<v-icon>remove-circle</v-icon></v-btn>
+                </v-flex>
               </v-layout>
-              <v-btn type="submit">Hinzufügen<v-icon>plus-circle</v-icon></v-btn>
-              <v-btn type="reset">Abbrechen<v-icon>remove-circle</v-icon></v-btn>
+              <v-layout>
+                <v-flex xs12>
+                  <v-alert color="error" icon="warning" v-model="error">
+                    {{error}}
+                  </v-alert>
+                </v-flex>
+              </v-layout>
             </v-form>
-            <v-alert color="error" icon="warning" v-model="error">
-              {{error}}
-            </v-alert>
           </v-flex>
         </v-layout>
         </v-container>

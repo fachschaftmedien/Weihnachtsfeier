@@ -1,16 +1,20 @@
 <template>
-    <div class="Program-container">
-      <article class="program" v-if="auth.isLoggedIn">
-        <h1> <v-text-field v-model="program.headline"></v-text-field></h1>
-        <v-text-field v-model="program.content" textarea></v-text-field>
-        <v-btn icon @click="update">Änderungen Speichern <v-icon>save</v-icon></v-btn>
-        <v-alert color="error" icon="warning" v-show="error"></v-alert>
-      </article>
-      <article class="program" v-else>
-        <h1> {{program.headline}} </h1>
-        <div class="article-text" v-html="program.content"></div>
-      </article>
-    </div>
+    <v-container class="program-container">
+      <v-card class="program" v-if="auth.isLoggedIn">
+        <v-card-title class="title"><v-text-field v-model="program.headline"></v-text-field></v-card-title>
+        <v-card-text><v-text-field v-model="program.content" textarea></v-text-field></v-card-text>
+        <v-alert color="error" icon="warning" v-show="error">
+          {{error}}
+        </v-alert>
+        <v-card-actions>
+          <v-btn @click="update">speichern <v-icon>save</v-icon></v-btn>
+        </v-card-actions>
+      </v-card>
+      <v-card class="program" v-else>
+        <v-card-title class="title"> {{program.headline}} </v-card-title>
+        <v-card-text class="article-text" v-html="program.content"></v-card-text>
+      </v-card>
+    </v-container>
 </template>
 
 <script>

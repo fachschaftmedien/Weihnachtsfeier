@@ -2,7 +2,7 @@
   <v-app id="app">
     <v-toolbar flat persistent clipped class="page-header headline-container" app>
       <v-toolbar-side-icon @click="nav = !nav"></v-toolbar-side-icon>
-      <v-toolbar-title class="headline"> Weihnachtsfeier Fachbereich Medien</v-toolbar-title>
+      <v-toolbar-title class="headline"> Weihnachtsfeier FB Medien</v-toolbar-title>
     </v-toolbar>
     <v-navigation-drawer class="nav navigation" persistent v-model="nav" enable-resize-watcher app>
       <v-toolbar flat>
@@ -34,11 +34,9 @@
     </v-navigation-drawer>
     <main>
       <v-content>
-        <v-container fluid fill-height>
+        <v-container fill-height>
           <v-layout>
-            <transition>
-              <router-view></router-view>
-            </transition>
+            <router-view></router-view>
           </v-layout>
         </v-container>
       </v-content>
@@ -66,7 +64,7 @@
           },
           {
             icon: 'event',
-            name: 'Abendprgramm',
+            name: 'Abendprogramm',
             subtitle: 'Was haben wir geplant',
             link: '/Program'
           },

@@ -1,16 +1,16 @@
 <template>
-  <div class="front-container">
-    <article class="front" v-if="auth.isLoggedIn">
-      <h1> <v-text-field v-model="front.headline"></v-text-field></h1>
-      <v-text-field v-model="front.content" textarea></v-text-field>
-      <v-btn icon @click="update">Änderungen Speichern <v-icon>save</v-icon></v-btn>
+  <v-container class="front-container">
+    <v-card class="front" v-if="auth.isLoggedIn">
+      <v-card-title class="title"><v-text-field v-model="front.headline"></v-text-field></v-card-title>
+      <v-card-text><v-text-field v-model="front.content" textarea></v-text-field></v-card-text>
+      <v-card-actions><v-btn @click="update">Änderungen Speichern <v-icon>save</v-icon></v-btn></v-card-actions>
       <v-alert color="error" icon="warning" v-show="error"></v-alert>
-    </article>
-    <article class="front" v-else>
-      <h1> {{front.headline}} </h1>
-      <div class="article-text" v-html="front.content"></div>
-    </article>
-  </div>
+    </v-card>
+    <v-card class="front" v-else>
+      <v-card-title class="title"> {{front.headline}} </v-card-title>
+      <v-card-text class="article-text" v-html="front.content"></v-card-text>
+    </v-card>
+  </v-container>
 </template>
 
 <script>

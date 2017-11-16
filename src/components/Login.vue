@@ -6,7 +6,7 @@
       </v-list-tile-action>
       <v-list-tile-content>
         <v-list-tile-title>
-          <router-link to="/Front">Login</router-link>
+          Login
         </v-list-tile-title>
         <v-list-tile-sub-title>
           Fachschafts-Anmeldung
@@ -19,7 +19,7 @@
       </v-list-tile-action>
       <v-list-tile-content>
         <v-list-tile-title>
-          <router-link to="/Front">Logout</router-link>
+          Logout
         </v-list-tile-title>
         <v-list-tile-sub-title>
           Abmelden, weiter als normaler Nutzer
